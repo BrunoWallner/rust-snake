@@ -1,2 +1,4 @@
 # rust-snake
-a simple snake game entierly written in rust using ggez crate
+A simple snake game entierly written in rust
+I trie to use as little as possible external depenendencies
+It should be possible to play it completely in cli without need of X11 or something else 
