@@ -3,8 +3,8 @@ name = "rust_snake"
 version = "0.1.0"
 authors = ["Luca <b.lucab1211@gmail.com>"]
 edition = "2018"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-# git test
+license = "MIT"
+description = "Snake the game written in rust"
+repository = "https://github.com/BrunoWallner/rust-snake"
 
 [dependencies]
