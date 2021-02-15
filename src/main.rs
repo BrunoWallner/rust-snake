@@ -6,15 +6,9 @@ mod functions;
 use functions::sleep;
 
 fn main() {
-    let mut canvas = Canvas {
-        size: [32, 32],
-        buffer: vec![0]
-    };
+    let mut canvas = Canvas {size: [16, 8], buffer: vec![vec![0]]};
 
-    let mut shape = Shape {
-        size: [2, 2],
-        position: [2, 2]
-    };
+    let mut shape = Shape {size: [1, 1], position: [3, 1]};
 
     canvas.Init();
 
@@ -22,10 +16,13 @@ fn main() {
         canvas.Clear();
 
         canvas.Draw(&shape);
-        shape.Move([0, 1]);
+        shape.Move([1, 0]);
+
+        //debug
+        println!("{} : {}", shape.position[0], shape.position[1]);
 
         canvas.Update();
 
-        sleep(1000/5);
+        sleep(1000/1);
     }
 }
