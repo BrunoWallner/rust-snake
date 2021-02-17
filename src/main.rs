@@ -6,20 +6,21 @@ mod functions;
 use functions::sleep;
 
 fn main() {
-    let mut canvas = Canvas::new(32, 32);
+    let mut canvas = Canvas::new(64, 48);
 
-    let mut shape = Shape::new(1, 1, 1, 1);
+    let mut shape = Shape::new(0, 0, 1, 1);
 
-    canvas.Init();
+    canvas.init();
 
     loop {
-        canvas.Clear();
+        canvas.clear();
+        canvas.draw_border();
 
-        canvas.Draw(&shape);
-        shape.Move([1, 1]);
+        shape.Move(1, 1);
+        canvas.draw(&shape);
 
-        canvas.Update();
+        canvas.update();
 
-        sleep(1000/1);
+        sleep(1000/15);
     }
 }
