@@ -1,6 +1,5 @@
 #![allow(non_snake_case)]
 use std::io::{self, Write};
-use colored::*;
 
 pub struct Canvas {
     pub size: [i32; 2],
@@ -50,9 +49,9 @@ impl Canvas {
             for x in 0..self.size[0] as usize {
                 match self.buffer[x][y] {
                     0 => print!("  "),
-                    1 => print!("{}", "██".red()),
-                    2 => print!("{}", "██".green()),
-                    3 => print!("{}", "██".blue()),
+                    1 => print!("{}", "██"),
+                    2 => print!("{}", "▒▒"),
+                    3 => print!("{}", "░░"),
                     _ => print!("{}", "?")
                 }
             }

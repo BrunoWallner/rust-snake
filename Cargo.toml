@@ -8,4 +8,3 @@ description = "Snake the game written in rust"
 repository = "https://github.com/BrunoWallner/rust-snake"
 
 [dependencies]
-colored = "2"
