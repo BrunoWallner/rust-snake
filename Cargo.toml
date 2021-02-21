@@ -8,3 +8,4 @@ description = "Snake the game written in rust"
 repository = "https://github.com/BrunoWallner/rust-snake"
 
 [dependencies]
+terminal_size = "0.1.16"
