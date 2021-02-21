@@ -10,12 +10,12 @@ fn main() {
 
     let mut shape = Shape::new(1, 1, 1, 1);
 
-    if let Err(error) = canvas.init() {
-        println!("{}", error.trim());
-        return;
-    }
+    canvas.resize();
 
+    let fps: u32 = 15;
     loop {
+        canvas.resize();
+
         canvas.clear();
         canvas.draw_border();
 
@@ -24,6 +24,6 @@ fn main() {
 
         canvas.update();
 
-        sleep(1000/30);
+        sleep(1000/fps as u64);
     }
 }

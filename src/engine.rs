@@ -15,20 +15,24 @@ impl Canvas {
     pub fn new(x_size: u32, y_size: u32) -> Self {
         Canvas {size: [x_size, y_size], buffer: vec![vec![]]}
     }
-    pub fn init(&mut self) -> Result<(), &str> {
-        for x in 0..self.size[0] as usize{
-            self.buffer.push(Vec::new());
-            for _y in 0..self.size[1] as usize {
-                self.buffer[x].push(0);
-            }
-            //checks terminal size
-            if let Some((Width(w), Height(h))) = terminal_size() {
-                if ((w as u32) < self.size[0] * 2) || ((h as u32) < self.size[1]) {
-                    return Err("Terminal is too small, Game can't be displayed");
+    pub fn resize(&mut self) {
+        if let Some((Width(w), Height(h))) = terminal_size() {
+            if (self.size[0] != (w / 2) as u32) || (self.size[1] != (h -1) as u32) {
+                //deletes framebuffer
+                for _x in 0..self.size[0] as usize{
+                    self.buffer.pop();
+                }
+                //updates canvas size
+                self.size = [(w / 2) as u32, (h - 1) as u32];
+                //rebuilds framebuffer
+                for x in 0..self.size[0] as usize{
+                    self.buffer.push(Vec::new());
+                    for _y in 0..self.size[1] as usize {
+                        self.buffer[x].push(0);
+                    }
                 }
             }
         }
-        Ok(())
     }
     pub fn draw(&mut self, shape: &Shape) {
         for y in 1..self.size[1] as usize - 1 {
